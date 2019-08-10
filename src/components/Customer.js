@@ -1,37 +1,22 @@
 import React, { Component } from 'react';
+import TableRow from '@material-ui/core/TableRow';
+import TableCell from '@material-ui/core/TableCell';
 
 class Customer extends Component {
     render() {
         const { customer } = this.props;
+        const { id, image, name, birthday, gender, job } = customer;
         return (
-            <div>
-                <CustomerProfile customer={customer} />         
-            </div>
+            <TableRow>
+                <TableCell>{id}</TableCell>
+                <TableCell><img src={image} alt="profile"/></TableCell>
+                <TableCell>{name}</TableCell>
+                <TableCell>{birthday}</TableCell>
+                <TableCell>{gender}</TableCell>
+                <TableCell>{job}</TableCell>
+            </TableRow>
         );
     }
 }
-
-class CustomerProfile extends Component {
-    render() {
-        const { customer } = this.props;
-        const customerProfile = customer.map(
-            custom => (
-            <div key={custom.id}>
-                <img src={custom.image} alt="profile"/>
-                <h2>{custom.name}({custom.id})</h2>
-                <p>{custom.birthday}</p>
-                <p>{custom.gender}</p>
-                <p>{custom.job}</p>
-            </div>
-            )
-        );
-        return (
-            <div>
-                {customerProfile}
-            </div>
-        );
-    }
-}
-
 
 export default Customer;
